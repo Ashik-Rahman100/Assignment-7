@@ -14,10 +14,10 @@ body {
 }
 .search-box {
   border: 1px solid rgb(3, 118, 211);
-  width: 281px;
+  width: 271px;
   border-radius: 5px;
   margin: auto;
-  margin-top: 50px;
+  margin: 50px 550px;
   border-right: none;
 }
 .search-button {
@@ -47,6 +47,13 @@ body {
 .product-image {
   width: 150px;
   height: 150px;
+}
+.single-product{
+  background-color: rgb(3, 118, 211);
+  color: #fff;
+  margin: 3px;
+  border-radius: 5px;
+  height: 470px;
 }
 .cart {
   width: 350px;
