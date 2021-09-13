@@ -17,13 +17,18 @@ const showProducts = (products) => {
       <div>
     <img class="product-image" src=${image}></img>
       </div>
-      <h3>${product.title}</h3>
-      <p>Category: ${product.category}</p>
-      <p>Rating: ${product?.rating?.rate}</p>
-      <p>Count: ${product?.rating?.count}</p>
-      <h2>Price: $ ${product.price}</h2>
+      <h4>${product.title}</h4>
+      <p> <span class = 'fw-bold'>Category:</span> ${product.category}</p>
+      <p> <span class = 'fw-bold'>Rating:</span> ${product?.rating?.rate} <span class ='text-warning'><i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      </span></p>
+      <p> <span class = 'fw-bold'>Avarage-Count: </span>${product?.rating?.count}</p>
+      <h4><span class = 'fw-bold'>Price: $</span>  ${product.price}</h4>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+      <button id="details-btn" onclick ="singleProduct(${product.id})" class="btn btn-danger">Details</button></div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
@@ -82,3 +87,35 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
+
+// single product item 
+const singleProduct = (id) =>{
+   const url = `https://fakestoreapi.com/products/${id}`
+  fetch(url)
+  .then(res=>res.json())
+  .then(data=>displaySingleData(data))
+}
+
+const displaySingleData = (product) =>{
+  const cardContainer = document.getElementById('single-card');
+  const div = document.createElement('div');
+
+  div.innerHTML =`
+      <img src="${product.image}" class="card-img-top w-25 mt-5" alt="...">
+          <div class="card-body">
+              <h3 class="card-title">${product.title}</h3>
+              <p class="card-text"><span class = "fw-bold text-primary">Price : $</span> ${product.price}</p>
+              <p class="card-text"><span class = "fw-bold text-primary">Category : </span>${product.category}</p>
+              <p class="card-text"><span class = "fw-bold text-primary">rate : </span>${product.rating.rate} <span class ='text-warning'> <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              </span></p>
+              <p class="card-text"><span class = "fw-bold text-primary">Average : </span>${product.rating.count}</p>
+              
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+  `
+  cardContainer.appendChild(div)
+} 
