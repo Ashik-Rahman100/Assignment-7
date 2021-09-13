@@ -17,7 +17,7 @@ const showProducts = (products) => {
       <div>
     <img class="product-image" src=${image}></img>
       </div>
-      <h4>${product.title}</h4>
+      <h5>${product.title}</h5>
       <p> <span class = 'fw-bold'>Category:</span> ${product.category}</p>
       <p> <span class = 'fw-bold'>Rating:</span> ${product?.rating?.rate} <span class ='text-warning'><i class="fas fa-star"></i>
       <i class="fas fa-star"></i>
